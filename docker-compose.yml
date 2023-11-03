@@ -8,6 +8,6 @@ services:
     ports:
       - 8081:80
     volumes:
-      - .:/var/www/html
+      - ./build:/var/www/html
     env_file:
       - ./.env
