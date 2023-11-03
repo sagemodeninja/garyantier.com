@@ -18,10 +18,11 @@ module.exports = () => {
                 filename : 'styles/[name].css'
             }),
             new CopyPlugin({
-                patterns: [{
-                    from: './.htaccess',
-                    to: '.'
-                }]
+                patterns: [
+                    './.htaccess',
+                    './router.php',
+                    './static'
+                ]
             }),
         ],
         module: {

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
-    <script defer src="../../scripts/index.js"></script><link href="../../styles/index.css" rel="stylesheet"></head>
+    <script defer src="../../scripts/home.js"></script><link href="../../styles/home.css" rel="stylesheet"></head>
     <body>
         <a href="https://garyantier.com/12/31/1998/secret.html" style="color: white !important;">Secret Page</a>
         <div id="layout_header" class="layout">
