@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/antixlzd/garyantier.com/
+    - /bin/cp index.html $DEPLOYPATH
