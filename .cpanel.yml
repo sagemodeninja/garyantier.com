@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/antixlzd/garyantier.com/
-    - /bin/cp -R build $DEPLOYPATH
+    - /bin/cp -R build/* $DEPLOYPATH
