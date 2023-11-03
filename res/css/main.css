@@ -1,0 +1,136 @@
+html, body {
+    font-family: "Rokkitt", sans-serif;
+    margin: 0;
+}
+
+.layout {
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+#layout_header {
+    align-items: center;
+    background: rgba(255, 255, 255, .9);
+    border-bottom: solid 1px #ccc;
+    box-sizing: border-box;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+#site_logo {
+    margin: 0;
+}
+
+#layout_body {
+    background-color: #fff;
+    left: 0;
+    height: calc(100% - 120px);
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    z-index: 2;
+}
+
+#layout_navigation {
+    border-right: solid 1px #CCC;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 40px;
+    z-index: 1;
+}
+
+.navigation_links {
+    background-color: #FFF;
+    border: none;
+    color: black;
+    display: block;
+    font-size: 16px;
+    padding: 15px 12px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: scale(-1);
+    writing-mode: vertical-rl;
+    width: 16px;
+}
+
+.navigation_links:hover {
+    background-color: #EEE;
+}
+
+.navigation_links::after {
+    background-color: transparent;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 5px;
+}
+
+.navigation_links.active::after {
+    background-color: blue;
+}
+
+.layout_pages {
+    background-color: #FFF;
+    box-sizing: border-box;
+    display: none;
+    height: 100%;
+    left: 40px;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 5px 0 5px 20px;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 40px);
+}
+
+.layout_pages.active {
+    display: block;
+}
+
+.info_text {
+    margin: 0;
+}
+
+#button_hi {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    bottom: 0;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    cursor: pointer;
+    font-size: 30px;
+    margin: 20px;
+    outline: none;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    z-index: 5;
+}
+
+footer {
+    background-color: rgba(255, 255, 355, .9);
+    border-top: solid 1px #ccc;
+    bottom: 0;
+    box-sizing: border-box;
+    height: 50px;
+    left: 0;
+    padding: 0 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
