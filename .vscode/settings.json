@@ -2,5 +2,9 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "view.php": "view.php.ts,view.php.scss"
+    },
+    "files.exclude": {
+        "**/build/": true,
+        "**/node_modules/": true,
     }
 }

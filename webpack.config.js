@@ -6,22 +6,22 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = () => {
     return {
         target: 'web',
-        entry: autoDiscovery.lookupEntries('./src'),
+        entry: autoDiscovery.discover('./src', 'entry'),
         output: {
-            filename: 'scripts/[name].js',
+            filename: 'static/scripts/[name].js',
             path: path.resolve(__dirname, 'build'),
             clean: true,
         },
         plugins: [
-            ...autoDiscovery.lookupViews('./src'),
+            ...autoDiscovery.discover('./src', 'view'),
             new MiniCssExtractPlugin({
-                filename : 'styles/[name].css'
+                filename : 'static/styles/[name].css'
             }),
             new CopyPlugin({
                 patterns: [
-                    './.htaccess',
-                    './router.php',
-                    './static'
+                    './src/.htaccess',
+                    './src/router.php',
+                    {from: './src/static', to: 'static'}
                 ]
             }),
         ],
@@ -45,7 +45,7 @@ module.exports = () => {
         resolve: {
             extensions: ['.ts', '.js'],
             alias: {
-                '@': path.resolve(__dirname, 'src'),
+                '@': path.resolve(__dirname, 'src/static/scripts'),
             }
         },
         devtool: 'inline-source-map',

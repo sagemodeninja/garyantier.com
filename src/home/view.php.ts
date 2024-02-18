@@ -1,3 +1,5 @@
+// Some shit!
+
 import './view.php.scss';
 
 class NavigationComponent{

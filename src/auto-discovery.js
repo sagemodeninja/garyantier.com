@@ -1,39 +1,41 @@
-const fs = require('fs');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const fs = require('fs')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const fileTest = /^(view)\.php(\.ts)?$/;
-const scriptTest = /\.ts$/;
+const fileTest = /^(view)\.php(\.ts)?$/
+const scriptTest = /\.ts$/
 
 function lookupFiles(directory, route = '') {
-    const files = [];
-    const fileList = fs.readdirSync(directory);
+    const files = []
+    const fileList = fs.readdirSync(directory)
         
     fileList.forEach(file => {
-        const name = path.join(route, file);
-        const filePath = path.join(directory, file);
+        const name = path.join(route, file)
+        const filePath = path.join(directory, file)
 
         if (fs.statSync(filePath).isDirectory()) {
-            const subFiles = lookupFiles(filePath, name);
-            files.push(...subFiles);
+            const subFiles = lookupFiles(filePath, name)
+            files.push(...subFiles)
         }
 
         if (fileTest.test(file)) {
-            const type = scriptTest.test(file) ? 'script' : 'view';
+            const type = scriptTest.test(file) ? 'script' : 'view'
+            const path = `./${filePath}`
             
-            files.push({
-                route,
-                type,
-                path: './' + filePath
-            });
+            files.push({ route, type, path })
         }
     })
 
-    return files;
+    return files
 }
 
-function lookupViews(directory) {
-    const files = lookupFiles(directory);
+function formatEntry(name) {
+    const formatted = name.replace(/\W+/g, '_')
+    return `${formatted}-view`
+}
+
+function discoverViews(directory) {
+    const files = lookupFiles(directory)
 
     return files
             .filter(file => file.type === 'view')
@@ -41,27 +43,31 @@ function lookupViews(directory) {
                 return new HtmlWebpackPlugin({
                     template: file.path,
                     filename: path.join('views', file.route, 'index.php'),
-                    chunks: [file.route.replace(/\W+/g, '_')]
+                    chunks: [formatEntry(file.route)]
                 })
-            });
+            })
 }
 
-function lookupEntries(directory) {
-    const files = lookupFiles(directory);
+function discoverEntries(directory) {
+    const files = lookupFiles(directory)
 
     return files
             .filter(file => file.type === 'script')
             .reduce((entries, file) => {
-                const entry = file.route.replace(/\W+/g, '_');
+                const entry = formatEntry(file.route)
                 return { ...entries, [entry]: file.path }
-            }, {});
+            }, {})
 }
 
 module.exports = {
-    lookupViews: function (directory) {
-        return lookupViews(directory);
-    },
-    lookupEntries: function (directory) {
-        return lookupEntries(directory);
-    },
+    discover: (dir, type) => {
+        switch (type) {
+            case 'view':
+                return discoverViews(dir)
+            case 'entry':
+                return discoverEntries(dir)
+            default:
+                console.warn(`Unknown type: '${type}'.`)
+        }
+    }
 }

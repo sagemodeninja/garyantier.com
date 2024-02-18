@@ -6,7 +6,7 @@
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <link href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" rel="stylesheet"/>
-    <script defer src="../../../scripts/career_resume.js"></script><link href="../../../styles/career_resume.css" rel="stylesheet"></head>
+    <script defer src="../../../static/scripts/career_resume-view.js"></script><link href="../../../static/styles/career_resume-view.css" rel="stylesheet"></head>
     <body>
         <div id="resume_header">
             <h1>Gary Antier</h1>

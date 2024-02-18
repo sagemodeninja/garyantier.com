@@ -1,15 +1,12 @@
 <?php
-    $uri = $_SERVER['REQUEST_URI'];
-
-    $uri = str_replace('index.php', '', $uri);
-    $uri = rtrim($uri, '/');
+    $uri = str_replace('index.php', '', $_SERVER['REQUEST_URI']);
     
     if ($uri == '/') {
         $uri = '/home';
     }
 
     $file = 'views' . $uri . '/index.php';
-    $included = @include $file;
+    $included = @include_once $file;
 
     if (!$included) {
         http_response_code(404);

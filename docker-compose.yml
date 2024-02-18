@@ -9,5 +9,3 @@ services:
       - 8081:80
     volumes:
       - ./build:/var/www/html
-    env_file:
-      - ./.env
